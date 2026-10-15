@@ -12,6 +12,7 @@ from estrategia_frete import (
     FretePac,
     FreteTransportadora,
     FreteMotoboy,
+    FreteDrone,
 )
 
 
@@ -42,6 +43,11 @@ def main():
     pedido.set_estrategia(FreteMotoboy())
     frete_motoboy = pedido.calcular_frete()
     print(f"Valor do frete MOTOBOY: R$ {frete_motoboy:.2f}") 
+
+    # 5. NOVO REQUISITO: Frete via Drone (taxa fixa 25.00) - Teste de Extensibilidade (OCP)
+    pedido.set_estrategia(FreteDrone())
+    frete_drone = pedido.calcular_frete()
+    print(f"Valor do frete DRONE: R$ {frete_drone:.2f}")
 
     # Pedido 2 com peso de 10.0 kg via PAC (5.0 + 10.0 * 1.0 = 15.00)
     pedido2 = Pedido(peso_kg=10.0)

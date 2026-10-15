@@ -67,3 +67,18 @@ class FreteMotoboy(EstrategiaFrete):
 
     def calcular(self, pedido: "Pedido") -> float:
         return 15.0
+
+
+class FreteDrone(EstrategiaFrete):
+    """
+    Estratégia concreta para cálculo de frete via Drone (novo requisito).
+    
+    Demonstra a extensibilidade do padrão Strategy e a adesão ao Princípio Aberto/Fechado (OCP):
+    um novo algoritmo de frete foi adicionado sem modificar nenhuma linha da classe Pedido.
+    
+    Regra de negócio: Taxa fixa de R$ 25,00 (independente do peso).
+    """
+
+    def calcular(self, pedido: "Pedido") -> float:
+        return 25.0
+
