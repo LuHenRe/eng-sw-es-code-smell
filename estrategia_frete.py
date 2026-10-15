@@ -23,3 +23,47 @@ class EstrategiaFrete(ABC):
         :return: Valor total do frete em reais (float).
         """
         pass
+
+
+class FreteSedex(EstrategiaFrete):
+    """
+    Estratégia concreta para cálculo de frete via SEDEX.
+    
+    Regra de negócio: Taxa fixa de R$ 10,00 acrescida de R$ 1,50 por kg do pedido.
+    """
+
+    def calcular(self, pedido: "Pedido") -> float:
+        return 10.0 + (pedido.peso_kg * 1.5)
+
+
+class FretePac(EstrategiaFrete):
+    """
+    Estratégia concreta para cálculo de frete via PAC.
+    
+    Regra de negócio: Taxa fixa de R$ 5,00 acrescida de R$ 1,00 por kg do pedido.
+    """
+
+    def calcular(self, pedido: "Pedido") -> float:
+        return 5.0 + (pedido.peso_kg * 1.0)
+
+
+class FreteTransportadora(EstrategiaFrete):
+    """
+    Estratégia concreta para cálculo de frete via Transportadora.
+    
+    Regra de negócio: Taxa fixa de R$ 20,00 acrescida de R$ 3,00 por kg do pedido.
+    """
+
+    def calcular(self, pedido: "Pedido") -> float:
+        return 20.0 + (pedido.peso_kg * 3.0)
+
+
+class FreteMotoboy(EstrategiaFrete):
+    """
+    Estratégia concreta para cálculo de frete via Motoboy (entrega expressa local).
+    
+    Regra de negócio: Taxa fixa de R$ 15,00 (independente do peso).
+    """
+
+    def calcular(self, pedido: "Pedido") -> float:
+        return 15.0
